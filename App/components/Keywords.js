@@ -20,7 +20,9 @@ class Keywords extends Component {
                     myChart.setOption({
                         title: { text: '词频分布' },
                         tooltip: {},
-                        xAxis: {},
+                        xAxis: {
+                            type: 'value'
+                        },
                         yAxis: {
                             data: res.data.map(item => item.word)
                         },
@@ -39,7 +41,7 @@ class Keywords extends Component {
 
     render() {
         return (
-            <div id='main' style={{height: 3000}}></div>
+            <div id='main' style={{height: 1000}}></div>
         );
     }
 }
