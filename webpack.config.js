@@ -4,6 +4,9 @@ var webpack = require('webpack');
 
 module.exports = {
     devtool: 'eval',    // 会显示出报错行数与文件名, 等效命令: webpack --devtool eval
+    entry: {
+        app: './App/app.js'
+    },
     output: {
         path: path.join(__dirname, '/public/javascripts/'),
         filename: '[name].bundle.js'
@@ -31,10 +34,12 @@ module.exports = {
                     plugins: ['add-module-exports', 'typecheck']
                 }
             },
-            {
-                test: /\.css$/,
-                loader: 'style!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
-            }
+            // {
+            //     test: /\.css$/,
+            //     loader: 'style!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
+            // },
+            { test: /\.css$/, exclude: /\.useable\.css$/, loader: "style!css" },
+            { test: /\.useable\.css$/, loader: "style/useable!css" }
         ]
     },
     babel: {

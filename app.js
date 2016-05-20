@@ -8,11 +8,23 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
+var mongoose = require('mongoose');
+var settings = require('./settings.js');
+
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+
+// Database
+if(settings.mongouser){
+    mongoose.connect(settings.mongouri,{user: settings.mongouser, pass: settings.mongopass});
+}else{
+    mongoose.connect(settings.mongouri);}
+mongoose.connection.on('error', function () {
+    console.error('MongoDB Connection Error. Please make sure MongoDB is running.');
+});
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));

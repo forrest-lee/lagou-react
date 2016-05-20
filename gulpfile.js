@@ -6,9 +6,9 @@ var nodemon = require('gulp-nodemon');
 var webpackConfig = require('./webpack.config.js');         // 开发环境配置
 // var webpackProConfig = require('./webpack.pro.config.js');  // 生产环境配置
 
-webpackConfig.entry = {
-    app: './App/app.js'
-};
+// webpackConfig.entry = {
+//     app: './App/app.js'
+// };
 
 gulp.task("webpack", function() {
     return gulp.src('App/**/*.js')
