@@ -7,7 +7,7 @@ import Keywords from './components/Keywords';
 
 const AppRoutes = (
     <Route path="/" component={MenuPage}>
-        <IndexRoute component={MenuPage} />
+        <IndexRoute component={Position} />
         <Route path="position" component={Position} />
         <Route path='keywords' component={Keywords} />
     </Route>
